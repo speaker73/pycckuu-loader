@@ -6,8 +6,13 @@ module.exports = function(содержимое) {
     [/стоп(;|\s+)/g, 'break$1'],                         // break
     [/случай\s+/g, 'case '],                             // case
     [/класс\s+/g, 'class '],                             // class
+    [/правда\s+/g, 'true'],                              // true 
+    [/ложь\s+/g, 'false'],                               // false
+    [/конструктор\s*\(/g, 'constructor('],               // constructor
+    [/получить\s+/g, 'get '],                            // get
+    [/записать\s+/g, 'set '],                            // set
     [/поймать\s*\(/g, 'catch('],                         // catch
-    [/константа\s+/g, 'const '],                         // const
+    [/(константа|конст)\s+/g, 'const '],                 // const
     [/продолжить(;|\s+)/g, 'continue$1'],                // continue
     [/поумолчанию\s*:/g, 'default:'],                    // default
     [/удалить\s+/g, 'delete '],                          // delete
@@ -45,7 +50,6 @@ module.exports = function(содержимое) {
     [/\.соединить\(/g, '.splice('],                      // splice
     [/\.раздвинуть\(/g, '.unshift('],                    // unshift
     [/\.связать|склеить\(/g, '.concat('],                // concat
-    [/\.объединить\(/g, '.join('],                       // join
     [/\.срез\(/g, '.slice('],                            // slice
     [/\.в(c|С)троку\(\)/g, '.toSrtring()'],              // toString
     [/\.номер(В|в)\(/g, '.indexOf('],                    // indexOf
@@ -57,6 +61,8 @@ module.exports = function(содержимое) {
     [/\.свести\(/g, '.reduce('],                         // reduce
     [/\.прототип(\.|\s+)/g, '.prototype$1'],             // prototype
     [/\.длина/g, '.length'],                             // length
+    [/\.разбить\(/g, '.split('],                         // split
+    [/\.собрать\(/g, '.join('],                          // join
   ].forEach(function(англ) {
     содержимое = содержимое.replace(англ[0], англ[1]);
   });
