@@ -1,5 +1,5 @@
 module.exports = function(содержимое) {
-  console.log(JSON.stringify(содержимое) );  
+ /* console.log(JSON.stringify(содержимое) ); */ 
   [
     [/внимание\s*\(/g, 'alert('],                        // alert
     [/консоль\./g, 'console.'],                          // console
@@ -69,10 +69,9 @@ module.exports = function(содержимое) {
     [/{/g, '{\n'],
     [/}/g, '\n}']  
   ].forEach(function(англ) {
-   
     содержимое = содержимое.replace(англ[0], англ[1]);
   });
-    console.log(JSON.stringify(содержимое) )
-    console.log(содержимое )
+   /* console.log(JSON.stringify(содержимое) )
+    console.log(содержимое )*/
   return содержимое;
 }
