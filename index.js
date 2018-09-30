@@ -1,4 +1,5 @@
 module.exports = function(содержимое) {
+  console.log(JSON.stringify(содержимое) );  
   [
     [/внимание\s*\(/g, 'alert('],                        // alert
     [/консоль\./g, 'console.'],                          // console
@@ -6,6 +7,8 @@ module.exports = function(содержимое) {
     [/стоп(;|\s+)/g, 'break$1'],                         // break
     [/случай\s+/g, 'case '],                             // case
     [/класс\s+/g, 'class '],                             // class
+    [/\s\s\r\n/g, '}'],                              // }
+    [/\s\r\n/g, '{'],                                 // {
     [/правда\s+/g, 'true'],                              // true 
     [/ложь\s+/g, 'false'],                               // false
     [/конструктор\s*\(/g, 'constructor('],               // constructor
@@ -63,9 +66,13 @@ module.exports = function(содержимое) {
     [/\.длина/g, '.length'],                             // length
     [/\.разбить\(/g, '.split('],                         // split
     [/\.собрать\(/g, '.join('],                          // join
+    [/{/g, '{\n'],
+    [/}/g, '\n}']  
   ].forEach(function(англ) {
+   
     содержимое = содержимое.replace(англ[0], англ[1]);
   });
-
+    console.log(JSON.stringify(содержимое) )
+    console.log(содержимое )
   return содержимое;
 }
